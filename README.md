@@ -34,11 +34,11 @@ spring.threads.virtual.enabled=true
 ```
 
 ```
- docker build -t performance-test .
+docker build -t performance-test .
 ```
 
 ```
- docker run --cpus 1 -p 8080:8080 performance-test
+docker run --cpus 1 -p 8080:8080 performance-test
 ```
 
 ```
