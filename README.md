@@ -45,7 +45,7 @@ spring.threads.virtual.enabled=true
 curl localhost:8080/standard
 ```
 
-## Visualize throughput
+## Visualize data
 
 ```
 python3 plot.py [file1] [file2]
