@@ -13,6 +13,7 @@
 `busyWait()` - busy waits for one second
 
 `base64()` - encodes string to base64 in a loop until it takes 1 second total
+`httpRequest()` - makes call to another instance of this application running on port 8081 that is doing 1-second sleep
 
 ## Virtual Threads
 To enable Virtual Thread processing set variable in application.properties

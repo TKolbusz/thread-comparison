@@ -3,7 +3,12 @@ package performance.comparison.test
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 import reactor.core.publisher.Mono
-import java.util.Base64
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.net.HttpURLConnection
+import java.net.URL
+import java.util.*
+
 
 @RestController
 class TestController {
@@ -51,5 +56,28 @@ class TestController {
             str.append(i % 255)
         }
         return str.toString()
+    }
+
+
+    fun httpRequest(): String {
+        val url: URL = URL("http://localhost:8081/standard")
+        val connection: HttpURLConnection = url.openConnection() as HttpURLConnection
+
+        try {
+            // Set request method to GET
+            connection.setRequestMethod("GET")
+
+            // Read the response
+            val response = java.lang.StringBuilder()
+            BufferedReader(InputStreamReader(connection.getInputStream())).use { reader ->
+                var line: String?
+                while ((reader.readLine().also { line = it }) != null) {
+                    response.append(line)
+                }
+            }
+            return response.toString()
+        } finally {
+            connection.disconnect()
+        }
     }
 }
