@@ -60,14 +60,11 @@ class TestController {
 
 
     fun httpRequest(): String {
-        val url: URL = URL("http://localhost:8081/standard")
+        val url = URL("http://localhost:8081/standard")
         val connection: HttpURLConnection = url.openConnection() as HttpURLConnection
 
         try {
-            // Set request method to GET
             connection.setRequestMethod("GET")
-
-            // Read the response
             val response = java.lang.StringBuilder()
             BufferedReader(InputStreamReader(connection.getInputStream())).use { reader ->
                 var line: String?
