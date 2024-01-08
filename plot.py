@@ -18,7 +18,8 @@ def calculate_throughput(df, interval='1S', spline_order=5):
     Calculates the throughput (requests per second).
     """
     # Convert timestamp to datetime
-    df['timeStamp'] = pd.to_datetime(df['timeStamp'], unit='ms')
+    df['timeStamp'] = pd.to_datetime(df['timeStamp'], unit='ms') + pd.to_timedelta(df['elapsed'], unit='ms')
+#     df['timeStamp'] = pd.to_datetime(df['timeStamp'], unit='ms')
 
     # Normalize to relative time (starting from 0)
     df['timeStamp'] -= df['timeStamp'].min()
